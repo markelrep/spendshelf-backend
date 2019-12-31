@@ -2,9 +2,13 @@ kind: pipeline
 name: default
 
 type: docker
+workspace:
+  base: /go
+  path: src/github.com/markelrep/spendshelf-backend/src
 steps:
   - name: test
     image: golang
     commands:
-      - go test ./src/tests/
-      - go build ./src/
+      - go mod tidy
+      - go test ./tests/
+      - go build
