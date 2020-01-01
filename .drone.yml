@@ -4,11 +4,12 @@ name: default
 type: docker
 workspace:
   base: /go
-  path: src/github.com/markelrep/spendshelf-backend/src
+  path: src/github.com/markelrep/spendshelf-backend
 steps:
   - name: test
     image: golang
     commands:
+      - cd src/
       - go mod tidy
       - go test ./tests/
       - go build
